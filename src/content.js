@@ -137,6 +137,11 @@
   async function activate() {
     if (active) return;
     active = true;
+    try {
+      if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    } catch (e) {}
     updateLauncher(true);
     const myToken = ++activationToken;
 
@@ -231,13 +236,10 @@
   function updateLauncher(inLyricsMode) {
     const launcher = document.getElementById('ytm-lyrics-launcher');
     if (!launcher) return;
-    launcher.hidden = false;
     if (inLyricsMode) {
-      launcher.classList.add('is-in-lyrics-mode');
-      launcher.setAttribute('aria-label', 'Exit LyricsZen');
-      launcher.setAttribute('title', 'Exit LyricsZen (Esc)');
-      launcher.innerHTML = '<span class="ytm-lyrics-launcher-mark">✕</span> Exit LyricsZen';
+      launcher.hidden = true;
     } else {
+      launcher.hidden = false;
       launcher.classList.remove('is-in-lyrics-mode');
       launcher.setAttribute('aria-label', 'Open LyricsZen');
       launcher.setAttribute('title', 'Open LyricsZen (Ctrl+Shift+L)');
@@ -246,14 +248,15 @@
   }
 
   function installLauncher() {
-    if (document.getElementById('ytm-lyrics-launcher')) return;
-    const launcher = document.createElement('button');
+    let launcher = document.getElementById('ytm-lyrics-launcher');
+    if (launcher) return;
+    launcher = document.createElement('button');
     launcher.id = 'ytm-lyrics-launcher';
     launcher.type = 'button';
     launcher.setAttribute('aria-label', 'Open LyricsZen');
     launcher.innerHTML = '<span class="ytm-lyrics-launcher-mark">♪</span> LyricsZen';
     launcher.addEventListener('click', toggle);
-    document.body.appendChild(launcher);
+    (document.documentElement || document.body).appendChild(launcher);
   }
 
   installLauncher();

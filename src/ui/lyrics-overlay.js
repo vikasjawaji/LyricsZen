@@ -186,7 +186,8 @@
         this._onResize = null;
       }
       if (this._onKeyDown) {
-        document.removeEventListener('keydown', this._onKeyDown);
+        window.removeEventListener('keydown', this._onKeyDown, true);
+        document.removeEventListener('keydown', this._onKeyDown, true);
         this._onKeyDown = null;
       }
       if (this._host) this._host.remove();
@@ -319,11 +320,15 @@
             <span class="ytm-lyrics-time" id="ytm-lyrics-total">0:00</span>
           </div>
         </div>
+        <button class="ytm-lyrics-floater-exit" id="ytm-lyrics-floater-exit" type="button" aria-label="Exit LyricsZen" title="Exit LyricsZen (Esc)">
+          <span class="ytm-lyrics-floater-mark">✕</span> Exit LyricsZen
+        </button>
       `;
 
       this._els = {
         root,
         exit: root.querySelector('.ytm-lyrics-exit'),
+        exitFloater: root.querySelector('#ytm-lyrics-floater-exit'),
         title: root.querySelector('#ytm-lyrics-title'),
         artist: root.querySelector('#ytm-lyrics-artist'),
         scroll: root.querySelector('#ytm-lyrics-scroll'),
@@ -366,6 +371,9 @@
       this._buildVisualizerOptions();
 
       this._els.exit.addEventListener('click', () => this._call('exit'));
+      if (this._els.exitFloater) {
+        this._els.exitFloater.addEventListener('click', () => this._call('exit'));
+      }
       this._els.playpause.addEventListener('click', () => {
         const isPlaying = this._els.playpause.classList.contains('is-playing');
         this.setPlaying(!isPlaying);
@@ -437,28 +445,43 @@
           return;
         }
         const tag = (e.target && e.target.tagName) || '';
-        const inInput = ['INPUT', 'BUTTON', 'TEXTAREA'].includes(tag);
-        if (e.code === 'Space' && !inInput) {
-          e.preventDefault();
-          const isPlaying = this._els.playpause && this._els.playpause.classList.contains('is-playing');
-          this.setPlaying(!isPlaying);
-          this._call('togglePlay');
-          return;
+        const isTextInput = tag === 'TEXTAREA' || (tag === 'INPUT' && !['button', 'submit', 'checkbox', 'radio'].includes(e.target.type)) || (e.target && e.target.isContentEditable);
+        if (e.code === 'Space' || e.key === ' ') {
+          if (!isTextInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            if (e.repeat) return;
+            const now = Date.now();
+            if (now - (this._lastSpaceTime || 0) < 220) return;
+            this._lastSpaceTime = now;
+            if (e.target && typeof e.target.blur === 'function') {
+              e.target.blur();
+            }
+            const isPlaying = this._els.playpause && this._els.playpause.classList.contains('is-playing');
+            this.setPlaying(!isPlaying);
+            this._call('togglePlay');
+            return;
+          }
         }
-        if (!inInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (!isTextInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
           if (e.key === 'ArrowLeft' || e.code === 'ArrowLeft' || e.key === 'j' || e.key === 'J') {
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             this._call('skipTime', -15);
             return;
           }
           if (e.key === 'ArrowRight' || e.code === 'ArrowRight' || e.key === 'l' || e.key === 'L') {
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             this._call('skipTime', 15);
             return;
           }
         }
       };
-      document.addEventListener('keydown', this._onKeyDown, true);
+      window.addEventListener('keydown', this._onKeyDown, true);
 
       return root;
     }
@@ -785,7 +808,7 @@
         p.tabIndex = 0;
         p.addEventListener('click', () => this._call('seekToTime', line.time));
         p.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === 'Enter') {
             e.preventDefault();
             this._call('seekToTime', line.time);
           }

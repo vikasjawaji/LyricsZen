@@ -282,6 +282,15 @@
     }
 
     togglePlay() {
+      this.ensureAttached();
+      if (this._video) {
+        if (this._video.paused || this._video.ended) {
+          this.play();
+        } else {
+          this.pause();
+        }
+        return;
+      }
       const clicked = this._clickControl([
         'ytmusic-player-bar #play-pause-button',
         '#play-pause-button',

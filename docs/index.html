@@ -176,20 +176,24 @@
                 <select id="demo-font-select" class="demo-select">
                   <option value="serif">Serif (Georgia)</option>
                   <option value="sans" selected>Sans (Modern)</option>
-                  <option value="rounded">Rounded</option>
-                  <option value="display">Display</option>
+                  <option value="rounded">Rounded (SF Pro)</option>
+                  <option value="mono">Mono (Cascadia)</option>
+                  <option value="display">Display (Impact)</option>
+                  <option value="humanist">Humanist (Optima)</option>
+                  <option value="casual">Casual (Cursive)</option>
                 </select>
               </div>
 
               <div class="demo-opt-group">
-                <label for="demo-size-range">Size: <span id="demo-size-val">30px</span></label>
-                <input type="range" id="demo-size-range" min="18" max="52" value="30" class="demo-mini-slider">
+                <label for="demo-size-range">Size: <span id="demo-size-val">28px</span></label>
+                <input type="range" id="demo-size-range" min="16" max="96" value="28" class="demo-mini-slider">
               </div>
 
               <div class="demo-opt-group">
                 <label>Color:</label>
                 <div class="demo-color-dots">
                   <button class="demo-dot is-active" data-color="#ffffff" style="background:#ffffff;" title="White"></button>
+                  <button class="demo-dot" data-color="#f2ead9" style="background:#f2ead9;" title="Warm"></button>
                   <button class="demo-dot" data-color="#ffd400" style="background:#ffd400;" title="Yellow"></button>
                   <button class="demo-dot" data-color="#4da6ff" style="background:#4da6ff;" title="Blue"></button>
                   <button class="demo-dot" data-color="#ff8fc8" style="background:#ff8fc8;" title="Pink"></button>
@@ -207,7 +211,7 @@
       <div class="section-header">
         <span class="section-tag">Engineered for Excellence</span>
         <h2 class="section-title">Why Music Lovers Choose LyricsZen</h2>
-        <p class="section-desc">Designed to feel like an organic, native part of YouTube Music™ with uncompromising audio purity.</p>
+        <p class="section-desc">Designed to feel like an organic, native part of YouTube Music™ with uncompromising audio purity and full-screen immersion.</p>
       </div>
 
       <div class="features-grid">
@@ -216,15 +220,15 @@
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <h3>Sub-50ms Synchronized Tracking</h3>
-          <p>Unlike standard extensions that poll audio only 4 times a second, LyricsZen runs a high-precision 50ms engine. Lines activate on the exact vocal beat.</p>
+          <p>Unlike standard extensions that check playback only 4 times a second, LyricsZen runs a high-precision 50ms engine. Lines activate on the exact vocal beat.</p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon-wrapper" style="--accent: #9d4edd;">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h3>Intelligent 3-Tier Lyrics Engine</h3>
-          <p>Automatic cascading fallback checks YouTube timed lyrics &rarr; LRCLIB time-synced &rarr; YouTube static cards &rarr; Plain lyrics &rarr; Lyrics.ovh. You never get a blank screen.</p>
+          <h3>3-Stage, 6-Source Fallback Engine</h3>
+          <p>Intelligently cascades through YouTube Timed &rarr; LRCLIB Synced &rarr; YouTube Static Card &rarr; LRCLIB Plain &rarr; Lyrics.ovh &rarr; Description Shelf. Gracefully displays clean status if lyrics are unavailable.</p>
         </div>
 
         <div class="feature-card">
@@ -232,7 +236,7 @@
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
           </div>
           <h3>Flawless Center Alignment</h3>
-          <p>Whether text size is set to 18px or 96px, mathematical center scrolling ensures lyrics are locked dead-center in the viewport with zero layout jitter.</p>
+          <p>Whether text size is set to 16px or 96px, mathematical center scrolling ensures lyrics are locked dead-center in the viewport with zero layout jitter.</p>
         </div>
 
         <div class="feature-card">
@@ -244,11 +248,35 @@
         </div>
 
         <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #a06cd5;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h3>Floating Launcher Pill & Fullscreen</h3>
+          <p>1-click floating pill at the bottom-right of YouTube Music. Launches directly into immersive, distraction-free fullscreen mode with a single tap.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #e09f3e;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>±5.0s Timing Calibration</h3>
+          <p>Built-in timing calibration slider adjusts synchronization by &plusmn;5 seconds in 0.1s steps, with a 1-click Reset to fix misaligned community timestamps.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #48bfe3;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <h3>"Next in Line" Queue Drawer</h3>
+          <p>Open the fold-away queue drawer anytime to view upcoming tracks and click to switch songs instantly without leaving Lyrics Mode.</p>
+        </div>
+
+        <div class="feature-card">
           <div class="feature-icon-wrapper" style="--accent: #118ab2;">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
           </div>
           <h3>Party Edge Visualizers</h3>
-          <p>Cinematic edge perimeter audio visualizers (Bars, Dots, Twinkle, Wave, Pulse) that react smoothly to the rhythm without blocking lyric readability.</p>
+          <p>Cinematic edge perimeter audio visualizers (Bars, Dots, Twinkle, Wave, Pulse) with RGB hue cycling that react smoothly without blocking lyrics.</p>
         </div>
 
         <div class="feature-card">
@@ -271,10 +299,10 @@
 
       <div class="shortcuts-grid">
         <div class="shortcut-card">
-          <kbd class="key-combo"><span class="key">Shift</span> + <span class="key">L</span></kbd>
+          <kbd class="key-combo"><span class="key">Ctrl</span> + <span class="key">Shift</span> + <span class="key">L</span></kbd>
           <div class="shortcut-info">
             <h4>Toggle Lyrics Mode</h4>
-            <p>Open or close the immersive full-screen lyrics overlay instantly.</p>
+            <p>Open or close full-screen lyrics instantly (<span style="color:#e2b8ff">Cmd+Shift+L</span> on Mac).</p>
           </div>
         </div>
 
@@ -282,7 +310,15 @@
           <kbd class="key-combo"><span class="key">Space</span></kbd>
           <div class="shortcut-info">
             <h4>Play / Pause</h4>
-            <p>Pause or resume music playback seamlessly.</p>
+            <p>1-click instantaneous pause or resume music playback.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">Floating Pill</span></kbd>
+          <div class="shortcut-info">
+            <h4>1-Click Launcher</h4>
+            <p>Click bottom-right <strong>♪ LyricsZen</strong> / <strong>✕ Exit</strong> anytime.</p>
           </div>
         </div>
 
@@ -307,14 +343,6 @@
           <div class="shortcut-info">
             <h4>Exit Overlay</h4>
             <p>Safely return to standard YouTube Music navigation.</p>
-          </div>
-        </div>
-
-        <div class="shortcut-card">
-          <kbd class="key-combo"><span class="key">Click Line</span></kbd>
-          <div class="shortcut-info">
-            <h4>Seek to Lyric</h4>
-            <p>Click any lyric line in the screen to seek the track right to that exact time.</p>
           </div>
         </div>
       </div>

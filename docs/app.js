@@ -219,10 +219,13 @@
   fontSelect.addEventListener('change', (e) => {
     const val = e.target.value;
     const fonts = {
-      serif: 'Georgia, serif',
-      sans: "'Plus Jakarta Sans', sans-serif",
-      rounded: "system-ui, -apple-system, sans-serif",
-      display: "'Outfit', sans-serif"
+      serif: 'Georgia, "Iowan Old Style", "Palatino Linotype", serif',
+      sans: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      rounded: 'ui-rounded, "SF Pro Rounded", "Segoe UI Variable", -apple-system, sans-serif',
+      mono: 'ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace',
+      display: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif',
+      humanist: 'Candara, Optima, "Segoe UI", sans-serif',
+      casual: '"Comic Sans MS", "Bradley Hand", cursive'
     };
     track.style.fontFamily = fonts[val] || 'inherit';
     updateActiveLine(activeIndex, false);
