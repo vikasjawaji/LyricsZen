@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LyricsZen — Pure, Time-Synced Lyrics for YouTube Music™</title>
+  <meta name="description" content="A lightweight, privacy-first Chrome Extension delivering floating, distraction-free time-synced lyrics with intelligent multi-source fallback and zero audio distortion for YouTube Music™.">
+  <meta name="keywords" content="YouTube Music Lyrics, Time Synced Lyrics, Chrome Extension, LyricsZen, LRCLIB, Music Visualizer">
+  <meta property="og:title" content="LyricsZen — Pure, Time-Synced Lyrics for YouTube Music™">
+  <meta property="og:description" content="Floating, distraction-free time-synced lyrics with intelligent multi-source fallback and ambient edge visualizers.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/icon128.png">
+  <link rel="icon" type="image/png" href="assets/icon48.png">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand">
+        <img src="assets/icon48.png" alt="LyricsZen Logo" class="brand-logo" width="36" height="36">
+        <span class="brand-name">Lyrics<span>Zen</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#demo">Live Demo</a>
+        <a href="#features">Features</a>
+        <a href="#shortcuts">Shortcuts</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/vikasjawaji/LyricsZen" target="_blank" rel="noopener noreferrer" class="btn-github">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Star on GitHub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Chrome Extension for YouTube Music™</span>
+        </div>
+        <h1 class="hero-title">
+          Lyrics that breathe<br>
+          <span class="gradient-text">with your music.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Experience floating, full-screen, distraction-free time-synced lyrics with sub-50ms precision, intelligent multi-source fallback, ambient edge visualizers, and 100% native bit-perfect audio.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#install" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Get LyricsZen Free</span>
+          </a>
+          <a href="#demo" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span>Try Interactive Demo</span>
+          </a>
+        </div>
+
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <span class="highlight-icon">⚡</span>
+            <span>Sub-50ms Sync</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🛡️</span>
+            <span>3-Tier Fallback</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🎧</span>
+            <span>Zero Audio Distortion</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🔒</span>
+            <span>100% Private & Open Source</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Live Demo -->
+    <section class="demo-section" id="demo">
+      <div class="section-header">
+        <span class="section-tag">Interactive Preview</span>
+        <h2 class="section-title">See LyricsZen in Real-Time Action</h2>
+        <p class="section-desc">Experience our centered typography, smooth scaling active line, and ambient visualizer lights right in your browser.</p>
+      </div>
+
+      <div class="demo-wrapper">
+        <div class="demo-container" id="demo-player-box">
+          <!-- Demo edge visualizer -->
+          <div class="demo-edge-visualizer" id="demo-visualizer" aria-hidden="true">
+            <div class="demo-edge demo-edge-top"></div>
+            <div class="demo-edge demo-edge-right"></div>
+            <div class="demo-edge demo-edge-bottom"></div>
+            <div class="demo-edge demo-edge-left"></div>
+          </div>
+
+          <!-- Demo Header -->
+          <div class="demo-topbar">
+            <div class="demo-song-info">
+              <span class="demo-song-title" id="demo-title">Blinding Lights</span>
+              <span class="demo-song-artist" id="demo-artist">The Weeknd</span>
+            </div>
+            <div class="demo-controls-quick">
+              <button class="demo-pill-btn" id="demo-toggle-party" title="Toggle Party Edge Visualizer">
+                ✨ Party Mode: <strong id="demo-party-status">ON</strong>
+              </button>
+              <div class="demo-dropdown">
+                <button class="demo-pill-btn" id="demo-style-btn">Visualizer: <strong id="demo-style-name">Bars</strong></button>
+                <div class="demo-dropdown-menu" id="demo-style-menu">
+                  <button data-style="bars" class="is-active">Bars</button>
+                  <button data-style="dots">Dots</button>
+                  <button data-style="twinkle">Twinkle</button>
+                  <button data-style="wave">Wave</button>
+                  <button data-style="pulse">Pulse</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo Lyrics Screen -->
+          <div class="demo-lyrics-viewport" id="demo-viewport">
+            <div class="demo-lyrics-track" id="demo-lyrics-track">
+              <!-- Dynamically populated lines -->
+            </div>
+          </div>
+
+          <!-- Demo Transport Controls -->
+          <div class="demo-transport">
+            <div class="demo-transport-actions">
+              <button class="demo-icon-btn" id="demo-prev-btn" aria-label="Previous line" title="Previous Line">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+              </button>
+              <button class="demo-play-btn" id="demo-play-btn" aria-label="Play/Pause" title="Play / Pause">
+                <svg class="demo-icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="demo-icon-pause" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <button class="demo-icon-btn" id="demo-next-btn" aria-label="Next line" title="Next Line">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="m6 18 8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+              </button>
+            </div>
+
+            <div class="demo-seek-bar">
+              <span class="demo-time" id="demo-time-cur">0:00</span>
+              <input type="range" class="demo-slider" id="demo-progress-slider" min="0" max="100" value="0" aria-label="Seek time">
+              <span class="demo-time" id="demo-time-total">0:45</span>
+            </div>
+
+            <!-- Customizer controls bar -->
+            <div class="demo-customizer">
+              <div class="demo-opt-group">
+                <label for="demo-font-select">Font:</label>
+                <select id="demo-font-select" class="demo-select">
+                  <option value="serif">Serif (Georgia)</option>
+                  <option value="sans" selected>Sans (Modern)</option>
+                  <option value="rounded">Rounded</option>
+                  <option value="display">Display</option>
+                </select>
+              </div>
+
+              <div class="demo-opt-group">
+                <label for="demo-size-range">Size: <span id="demo-size-val">30px</span></label>
+                <input type="range" id="demo-size-range" min="18" max="52" value="30" class="demo-mini-slider">
+              </div>
+
+              <div class="demo-opt-group">
+                <label>Color:</label>
+                <div class="demo-color-dots">
+                  <button class="demo-dot is-active" data-color="#ffffff" style="background:#ffffff;" title="White"></button>
+                  <button class="demo-dot" data-color="#ffd400" style="background:#ffd400;" title="Yellow"></button>
+                  <button class="demo-dot" data-color="#4da6ff" style="background:#4da6ff;" title="Blue"></button>
+                  <button class="demo-dot" data-color="#ff8fc8" style="background:#ff8fc8;" title="Pink"></button>
+                  <button class="demo-dot" data-color="#7ee787" style="background:#7ee787;" title="Green"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Grid -->
+    <section class="features-section" id="features">
+      <div class="section-header">
+        <span class="section-tag">Engineered for Excellence</span>
+        <h2 class="section-title">Why Music Lovers Choose LyricsZen</h2>
+        <p class="section-desc">Designed to feel like an organic, native part of YouTube Music™ with uncompromising audio purity.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #ff4f91;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Sub-50ms Synchronized Tracking</h3>
+          <p>Unlike standard extensions that poll audio only 4 times a second, LyricsZen runs a high-precision 50ms engine. Lines activate on the exact vocal beat.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #9d4edd;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Intelligent 3-Tier Lyrics Engine</h3>
+          <p>Automatic cascading fallback checks YouTube timed lyrics &rarr; LRCLIB time-synced &rarr; YouTube static cards &rarr; Plain lyrics &rarr; Lyrics.ovh. You never get a blank screen.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #ffd166;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </div>
+          <h3>Flawless Center Alignment</h3>
+          <p>Whether text size is set to 18px or 96px, mathematical center scrolling ensures lyrics are locked dead-center in the viewport with zero layout jitter.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #06d6a0;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          </div>
+          <h3>100% Native Audio Purity</h3>
+          <p>Zero Web Audio API hooks, zero frequency-filtering DSP, and zero gain alterations. Your high-res audio streams directly from YouTube Music untouched.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #118ab2;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Party Edge Visualizers</h3>
+          <p>Cinematic edge perimeter audio visualizers (Bars, Dots, Twinkle, Wave, Pulse) that react smoothly to the rhythm without blocking lyric readability.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="--accent: #e76f51;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Zero Tracking & Full Privacy</h3>
+          <p>Runs strictly within your browser's isolated Shadow DOM. No user data, analytics, or listening habits are ever collected, tracked, or transmitted.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Keyboard Shortcuts -->
+    <section class="shortcuts-section" id="shortcuts">
+      <div class="section-header">
+        <span class="section-tag">Instant Control</span>
+        <h2 class="section-title">Master LyricsZen With Keystrokes</h2>
+        <p class="section-desc">Keep your hands on the keyboard and enjoy seamless playback control.</p>
+      </div>
+
+      <div class="shortcuts-grid">
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">Shift</span> + <span class="key">L</span></kbd>
+          <div class="shortcut-info">
+            <h4>Toggle Lyrics Mode</h4>
+            <p>Open or close the immersive full-screen lyrics overlay instantly.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">Space</span></kbd>
+          <div class="shortcut-info">
+            <h4>Play / Pause</h4>
+            <p>Pause or resume music playback seamlessly.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">&larr;</span> / <span class="key">J</span></kbd>
+          <div class="shortcut-info">
+            <h4>Rewind 15 Seconds</h4>
+            <p>Quickly rewind to catch a missed lyric verse.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">&rarr;</span> / <span class="key">L</span></kbd>
+          <div class="shortcut-info">
+            <h4>Skip 15 Seconds</h4>
+            <p>Jump forward through extended instrumental solos.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">Esc</span></kbd>
+          <div class="shortcut-info">
+            <h4>Exit Overlay</h4>
+            <p>Safely return to standard YouTube Music navigation.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-card">
+          <kbd class="key-combo"><span class="key">Click Line</span></kbd>
+          <div class="shortcut-info">
+            <h4>Seek to Lyric</h4>
+            <p>Click any lyric line in the screen to seek the track right to that exact time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section class="install-section" id="install">
+      <div class="install-card">
+        <span class="section-tag">Quick Setup</span>
+        <h2 class="section-title">Install LyricsZen in 30 Seconds</h2>
+        <p class="section-desc">Follow these quick steps to load LyricsZen directly into Chrome or any Chromium browser (Edge, Brave, Arc, Opera).</p>
+
+        <div class="steps-container">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Download or Clone</h3>
+              <p>Clone the repository or download the ZIP from GitHub:</p>
+              <div class="code-box">
+                <code>git clone https://github.com/vikasjawaji/LyricsZen.git</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Open Chrome Extensions</h3>
+              <p>In your address bar, navigate to <code>chrome://extensions</code> and toggle <strong>Developer mode</strong> in the top-right corner.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Load Unpacked Extension</h3>
+              <p>Click <strong>Load unpacked</strong> and select the <code>LyricsZen</code> folder. Navigate to <a href="https://music.youtube.com" target="_blank" rel="noopener noreferrer">music.youtube.com</a> and enjoy your lyrics!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="install-cta">
+          <a href="https://github.com/vikasjawaji/LyricsZen/archive/refs/heads/main.zip" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download ZIP (v1.0.0)</span>
+          </a>
+          <a href="https://github.com/vikasjawaji/LyricsZen" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>Browse Source on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="brand">
+          <img src="assets/icon48.png" alt="LyricsZen Logo" class="brand-logo" width="28" height="28">
+          <span class="brand-name">Lyrics<span>Zen</span></span>
+        </div>
+        <p class="footer-copy">Crafted with precision for pure music listening enjoyment.</p>
+      </div>
+
+      <div class="footer-right">
+        <a href="https://github.com/vikasjawaji/LyricsZen" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <a href="https://github.com/vikasjawaji/LyricsZen/blob/main/README.md" target="_blank" rel="noopener noreferrer">Documentation</a>
+        <a href="https://github.com/vikasjawaji/LyricsZen/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+        <a href="https://music.youtube.com" target="_blank" rel="noopener noreferrer">YouTube Music™</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LyricsZen. Released under the MIT License. YouTube Music™ is a trademark of Google LLC.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
